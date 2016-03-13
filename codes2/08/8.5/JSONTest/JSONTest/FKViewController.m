@@ -90,6 +90,10 @@ NSString* tableTitle;
 	NSLog(@"NSJSONSerialization转换得到的字符串为：%@" , json);
 	
 }
+
+
+
+
 - (IBAction)SBGenerate:(id)sender
 {
 	// 创建SBJsonWriter对象
