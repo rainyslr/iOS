@@ -31,6 +31,7 @@ FKAppDelegate* appDelegate;
 - (UITableViewCell *)tableView:(UITableView *)tableView
 	cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSIndexPath* myindex;
 	// 为表格行定义一个静态字符串作为标示符
 	static NSString* cellId = @"cellId";
 	// 从可重用表格行的队列中取出一个表格行

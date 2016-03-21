@@ -42,19 +42,28 @@ tire* _tire;
 
  int main(int argc ,char* argv[])
 {
+	/************manual reference cout*****************
 	tire* at = [[tire alloc] init];
+	NSLog(@"referece count:%ld",at.retainCount);//1
 	[at retain];
-	NSLog(@"referece count:%ld",at.retainCount);
-	[at retain];
-	NSLog(@"referece count:%ld",at.retainCount);
+	NSLog(@"referece count:%ld",at.retainCount);//2
 	[at release];
-	NSLog(@"referece count:%ld",at.retainCount);
-	[at release];
-	[at release];
+	NSLog(@"referece count:%ld",at.retainCount);//1
+	[at release];//0
     tire* at2 = [[tire alloc] init];
-	NSLog(@"referece count:%ld",at2.retainCount);
-	tire* at3 = at2;//实际上将指针2的值赋给指针3，也就是两个指针指向同一个对象不会增加相应对象的引用计数，这点和c＋不一样
-	NSLog(@"referece count:%ld",at2.retainCount);
-	NSLog(@"referece count:%ld",at3.retainCount);
+	NSLog(@"referece count:%ld",at2.retainCount);//1
+	tire* at3 = at2;//实际上将指针2的值赋给指针3，手动引用计数下他们所指向对象的引用计数不会增加
+	NSLog(@"referece count:%ld",at2.retainCount);//1
+	NSLog(@"referece count:%ld",at3.retainCount);//1
+	**********************************************/
+
+	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+	tire* at = [[tire alloc] init];
+	[at autorelease];
+	NSLog(@"referece count:%ld",at.retainCount);//1
+	// [at release];
+	
+	// NSLog(@"after referece count:%ld",at.retainCount);//1
+	[pool release];
 	return 0;
 }
