@@ -17,14 +17,14 @@
 		NSLog(@"===%@===%d" , [NSThread currentThread].name , i);
 		if(i == 20)
 		{
-			// 创建线程对象
-			NSThread *thread = [[NSThread alloc]initWithTarget:self
-				selector:@selector(run) object:nil];
-			// 启动新线程
-			[thread start];
+//			// 创建线程对象
+//			NSThread *thread = [[NSThread alloc]initWithTarget:self
+//				selector:@selector(run) object:nil];
+//			// 启动新线程
+//			[thread start];
 //			// 创建并启动新线程
-//			[NSThread detachNewThreadSelector:@selector(run) toTarget:self
-//				withObject:nil];
+			[NSThread detachNewThreadSelector:@selector(run) toTarget:self
+				withObject:nil];
 		}
 	}
 }

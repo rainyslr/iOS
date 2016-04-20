@@ -14,9 +14,11 @@
 	FKAppDelegate* appDelegate;
 }
 @end
+
 @implementation FKLoginController
 - (void)viewDidLoad
 {
+    
 	[super viewDidLoad];
 	appDelegate = [UIApplication sharedApplication].delegate;
 }
@@ -24,6 +26,7 @@
 {
 	// 获取用户输入的用户名和密码
 	NSString* name = self.nameField.text;
+    [self ]
 	NSString* pass = self.passField.text;
 	if(name != nil && name.length > 0
 	   && pass != nil && pass.length > 0)
@@ -32,7 +35,7 @@
 		NSDictionary* params = @{@"name": name , @"pass" : pass};
 		// 使用AFHTTPRequestOperationManager发送POST请求
 		[appDelegate.manager
-			POST:@"http://192.168.1.88:8888/AFNetworkingServer/login.jsp"
+			POST:@"http://127.0.0.1:8080/AFNetworkingServer/login.jsp"
 			parameters:params  // 指定请求参数
 			// 获取服务器响应成功时激发的代码块
 			success:^(AFHTTPRequestOperation *operation, id responseObject)

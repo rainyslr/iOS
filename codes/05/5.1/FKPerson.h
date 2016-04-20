@@ -5,9 +5,10 @@
 
 @interface FKPerson : NSObject
 {
+	int _age;
 	// 下面定义了两个成员变量
 	NSString* _name;
-	int _age;
+	
 }
 
 // 下面定义了一个setName: andAge:方法

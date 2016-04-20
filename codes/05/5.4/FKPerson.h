@@ -6,7 +6,8 @@
 @interface FKPerson : NSObject
 {
 	// 使用@private限制成员变量
-	@private
+	// @private
+		@public
 	NSString* _name;
 	int _age;
 }

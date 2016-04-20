@@ -12,7 +12,7 @@
 
 @implementation GMReader
 /**
- *  监听到消息后，掉用方法
+ *  监听到消息后，调用法
  *
  *  @param notification 通知
  */

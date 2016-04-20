@@ -24,7 +24,7 @@
 {
 	// 使用AFHTTPRequestOperationManager发送GET请求
 	[appDelegate.manager
-		GET:@"http://192.168.1.88:8888/AFNetworkingServer/secret.jsp"
+		GET:@"http://127.0.0.1:8080/AFNetworkingServer/secret.jsp"
 		parameters:nil // 指定无需请求参数
 		// 获取服务器响应成功时激发的代码块
 		success:^(AFHTTPRequestOperation *operation, id responseObject)

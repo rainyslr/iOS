@@ -32,6 +32,7 @@
 		@"系统介绍XML相关知识", nil];
 	// 设置当前视图关联的导航项的标题
 	self.navigationItem.title = @"图书列表";
+//    NSLog(self.navigationController);
 }
 - (void)viewWillAppear:(BOOL)animated
 {

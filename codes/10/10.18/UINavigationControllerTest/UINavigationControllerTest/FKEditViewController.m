@@ -36,6 +36,7 @@
 		style:UIBarButtonItemStyleBordered
 		target:self action:@selector(beginEdit:)];
 	self.navigationItem.rightBarButtonItem = rightBn;
+//    NSLog(self.navigationController);
 }
 
 - (void) beginEdit:(id)	sender
