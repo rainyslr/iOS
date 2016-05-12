@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ErQ-JF-1AK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ErQ-JF-1AK">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,16 +14,17 @@
                         <viewControllerLayoutGuide type="bottom" id="rcI-38-aMJ"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0J1-Lb-bTX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CbQ-cv-jjq">
-                                <rect key="frame" x="0.0" y="20" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbQ-cv-jjq">
+                                <rect key="frame" x="30" y="50" width="320" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="ik2-Wu-7dt"/>
+                                </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-V7-Mge">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUU-V7-Mge">
                                 <rect key="frame" x="20" y="272" width="280" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="开始">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -31,15 +32,25 @@
                                     <action selector="clicked:" destination="ErQ-JF-1AK" eventType="touchUpInside" id="w9W-yO-6OL"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2h8-rc-5q7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2h8-rc-5q7">
                                 <rect key="frame" x="136" y="216" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="adi-42-Xwc"/>
+                                    <constraint firstAttribute="height" constant="48" id="ebH-lY-c8O"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                        <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                        <constraints>
+                            <constraint firstItem="CbQ-cv-jjq" firstAttribute="top" secondItem="CQh-wf-5y1" secondAttribute="bottom" constant="30" id="5do-7I-Z1m"/>
+                            <constraint firstItem="CbQ-cv-jjq" firstAttribute="centerX" secondItem="NUU-V7-Mge" secondAttribute="centerX" id="6cW-4T-Sx5"/>
+                            <constraint firstItem="NUU-V7-Mge" firstAttribute="top" secondItem="2h8-rc-5q7" secondAttribute="bottom" constant="40" id="7E7-64-Bsi"/>
+                            <constraint firstItem="CbQ-cv-jjq" firstAttribute="centerX" secondItem="2h8-rc-5q7" secondAttribute="centerX" id="FB5-jf-poM"/>
+                            <constraint firstItem="2h8-rc-5q7" firstAttribute="top" secondItem="CbQ-cv-jjq" secondAttribute="bottom" constant="100" id="KHj-xM-gzC"/>
+                            <constraint firstItem="CbQ-cv-jjq" firstAttribute="leading" secondItem="0J1-Lb-bTX" secondAttribute="leading" constant="30" id="wKJ-vM-roO"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="image" destination="2h8-rc-5q7" id="yYz-bL-Etk"/>
                         <outlet property="picker" destination="CbQ-cv-jjq" id="vtx-bq-SXn"/>
@@ -48,12 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXB-u7-O9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="86"/>
+            <point key="canvasLocation" x="75" y="90.845070422535201"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

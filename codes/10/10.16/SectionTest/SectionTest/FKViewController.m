@@ -47,11 +47,14 @@ NSArray* stories;
 	// 获取指定分区对应stories集合中的元素
 	NSString* story = [stories objectAtIndex:section];
 	// 该stories集合元素包含多少个人物，该分区就包含多少表格行
-	return [[tableData objectForKey:story] count];
+    NSInteger result = [[tableData objectForKey:story] count];
+    NSLog(@"%ld rows in section:%ld",result,section);
+	return result;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView
 	cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
 	// 获取分区号
 	NSUInteger sectionNo = indexPath.section;
 	// 获取表格行的行号
@@ -62,6 +65,7 @@ NSArray* stories;
 		dequeueReusableCellWithIdentifier:cellId];
 	if(cell == nil)
 	{
+        NSLog(@"create at:%ld,%ld",sectionNo,rowNo);
 		cell = [[UITableViewCell alloc] initWithStyle:
 			UITableViewCellStyleDefault reuseIdentifier:cellId];
 	}
@@ -73,6 +77,19 @@ NSArray* stories;
 		objectAtIndex:rowNo];
 	return cell;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"最新有声.png"]];
+    return imgView;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"最新有声.png"]];
+    return imgView;
+}
+
 // UITableViewDataSource协议中的方法，该方法的返回值用于在表格右边建立一列浮动的索引。
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -91,5 +108,52 @@ NSArray* stories;
 	NSString* story = [stories objectAtIndex:section];	
 	return [NSString stringWithFormat:@"一共有%d个人物"
 		, [[tableData objectForKey:story] count]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 15;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 30;
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+
+
+//告诉tableView，哪一行和哪一个分组标题对应；
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return 1;
+}
+
+//在编辑结束cell的时候，保存修改；
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source
+{
+    
 }
 @end

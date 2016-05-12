@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		582D6C4D1CDA537A0060A28F /* 最新有声.png in Resources */ = {isa = PBXBuildFile; fileRef = 582D6C4C1CDA537A0060A28F /* 最新有声.png */; };
 		CC6AEF5B17F2FA670001096D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC6AEF5A17F2FA670001096D /* Images.xcassets */; };
 		CC6AEF5E17F2FAA60001096D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC6AEF5C17F2FAA60001096D /* Main.storyboard */; };
 		CCD1F19D17706E0F00E8D11E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD1F19C17706E0F00E8D11E /* UIKit.framework */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		582D6C4C1CDA537A0060A28F /* 最新有声.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "最新有声.png"; sourceTree = "<group>"; };
 		CC6AEF5A17F2FA670001096D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC6AEF5D17F2FAA60001096D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCD1F19917706E0F00E8D11E /* SectionTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 				CC6AEF5C17F2FAA60001096D /* Main.storyboard */,
 				CCD1F1AB17706E0F00E8D11E /* FKAppDelegate.h */,
 				CCD1F1AC17706E0F00E8D11E /* FKAppDelegate.m */,
+				582D6C4C1CDA537A0060A28F /* 最新有声.png */,
 				CCD1F1B417706E0F00E8D11E /* FKViewController.h */,
 				CCD1F1B517706E0F00E8D11E /* FKViewController.m */,
 				CC6AEF5A17F2FA670001096D /* Images.xcassets */,
@@ -158,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582D6C4D1CDA537A0060A28F /* 最新有声.png in Resources */,
 				CC6AEF5B17F2FA670001096D /* Images.xcassets in Resources */,
 				CCD1F1A717706E0F00E8D11E /* InfoPlist.strings in Resources */,
 				CC6AEF5E17F2FAA60001096D /* Main.storyboard in Resources */,

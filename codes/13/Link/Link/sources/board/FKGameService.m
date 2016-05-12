@@ -7,39 +7,45 @@
 //
 
 #import "FKGameService.h"
-
 #import "FKBaseBoard.h"
+
 #import "FKFullBoard.h"
 #import "FKHorizontalBoard.h"
 #import "FKVerticalBoard.h"
 #import "Constants.h"
 
 @implementation FKGameService
+
+- (instancetype)initWithMode:(NSString*)atype Scene:(NSString*)ascene
+{
+    self = [super init];
+
+    if (self) {
+        self.type = atype;
+        self.scene = ascene;
+    }
+    return self;
+}
+
 - (void) start
 {
-	// 定义一个FKBaseBoard对象
-	FKBaseBoard* board = nil;
-	// 获取一个随机数, 可取值0、1、2、3四值。
-	int index = arc4random() % 4;
-	// 随机生成FKBaseBoard的子类实例
-	switch (index)
-	{
-		case 0:
-			// 0返回FKVerticalBoard(竖向)
-			board = [[FKVerticalBoard alloc] init];
-			break;
-		case 1:
-			// 1返回FKHorizontalBoard(横向)
-			board = [[FKHorizontalBoard alloc] init];
-			break;
-		default:
-			// 默认返回FKFullBoard
-			board = [[FKFullBoard alloc] init];
-			break;
-	}
-	// 初始化FKPiece二维数组数组
-	self.pieces = [board create];
+    if([self.type isEqualToString:@"竖条纹"])
+    {
+        self.board = [[FKVerticalBoard alloc] init];
+    }
+    else if([self.type isEqualToString:@"横条纹"])
+        self.board = [[FKHorizontalBoard alloc] init];
+    else
+    {
+        self.board = [[FKFullBoard alloc] init];
+    }
+    self.board.scene = self.scene;
+    // 初始化FKPiece二维数组数组
+    self.pieces = [self.board create];
+    self.piece_width  = self.board.piece_width;
+    self.piece_height = self.board.piece_height;
 }
+
 - (BOOL) hasPieces
 {
 	// 遍历FKPiece二维数组的每个元素
@@ -72,10 +78,10 @@
 	}
 	// 获取relativeX坐标在FKPiece二维数组中的第一维的索引值
 	// 第二个参数为每张图片的宽
-	int indexX = [self getIndexWithRelateive:relativeX size: PIECE_WIDTH];
+	int indexX = [self getIndexWithRelateive:relativeX size: self.board.piece_width];
 	// 获取relativeY坐标在FKPiece二维数组中的第二维的索引值
 	// 第二个参数为每张图片的高
-	int indexY = [self getIndexWithRelateive:relativeY size: PIECE_HEIGHT];
+	int indexY = [self getIndexWithRelateive:relativeY size: self.board.piece_height];
 	// 这两个索引比数组的最小索引还小, 返回nil
 	if (indexX < 0 || indexY < 0)
 	{
@@ -131,7 +137,7 @@
 	if (p1.indexY == p2.indexY) //①
 	{
 		// 它们在同一行并可以相连, 没有转折点
-		if (![self isXBlockFromP1:p1Point toP2:p2Point pieceWidth:PIECE_WIDTH])
+		if (![self isXBlockFromP1:p1Point toP2:p2Point pieceWidth:self.piece_width])
 		{
 			return [[FKLinkInfo alloc] initWithP1:p1Point p2:p2Point];
 		}
@@ -140,7 +146,7 @@
 	if (p1.indexX == p2.indexX) //②
 	{
 		// 它们在同一列并可以相连, 没有转折点
-		if (![self isYBlockFromP1:p1Point toP2:p2Point pieceHeight:PIECE_HEIGHT])
+		if (![self isYBlockFromP1:p1Point toP2:p2Point pieceHeight:self.piece_height])
 		{
 			return [[FKLinkInfo alloc] initWithP1:p1Point p2:p2Point];
 		}
@@ -148,7 +154,7 @@
 	// 有一个转折点的情况
 	// 获取两个点的直角相连的点, 即只有一个转折点
 	FKPoint* cornerPoint = [self getCornerPointFromStartPoint:p1Point
-		toPoint:p2Point width:PIECE_WIDTH height: PIECE_HEIGHT];  //③
+		toPoint:p2Point width:self.board.piece_width height: self.board.piece_height];  //③
 	if (cornerPoint != nil)
 	{
 		return [[FKLinkInfo alloc] initWithP1:p1Point
@@ -157,7 +163,7 @@
 	// 该NSDictionaryp的key存放第一个转折点, value存放第二个转折点,
 	// NSDictionary的count说明有多少种可以连的方式
 	NSDictionary* turns = [self getLinkPointsFromPoint:p1Point
-		toPoint:p2Point width:PIECE_WIDTH height:PIECE_HEIGHT]; //④
+		toPoint:p2Point width:self.board.piece_width height:self.board.piece_height]; //④
 	if (turns.count != 0)
 	{
 		return [self getShortcutFromPoint:p1Point toPoint:p2Point

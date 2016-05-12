@@ -7,12 +7,13 @@
 //
 
 #import "FKGameView.h"
+#import "FKBaseBoard.h"
+
 #import "FKLinkInfo.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 @implementation FKGameView
-// 选中标识的图片对象
-UIImage* selectedImage;
+
 // 定义两个音效文件
 SystemSoundID gu;
 SystemSoundID dis;
@@ -22,8 +23,6 @@ UIColor* bubbleColor;
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		// 初始化代表选中框的图片
-		selectedImage = [UIImage imageNamed:@"selected.png"];
 		// 获取两个音效文件的的URL
 		NSURL* disUrl = [[NSBundle mainBundle]
 			URLForResource:@"dis" withExtension:@"wav"];
@@ -35,6 +34,7 @@ UIColor* bubbleColor;
 		// 使用图片平铺作为定义连接线的颜色
 		bubbleColor = [UIColor colorWithPatternImage:
 			[UIImage imageNamed:@"bubble.jpg"]];
+        
 	}
 	return self;
 }
@@ -78,11 +78,15 @@ UIColor* bubbleColor;
 		[self performSelector:@selector(setNeedsDisplay)
 			withObject:nil afterDelay:0.3];
 	}
+    
 	// 画选中标识的图片
-	if (self.selectedPiece != nil)
+    if (self.selectedPiece != nil)
 	{
-		[selectedImage drawAtPoint:CGPointMake(self.selectedPiece.beginX,
-			self.selectedPiece.beginY)];
+        CGContextSetStrokeColorWithColor(ctx, [[UIColor redColor] CGColor]);
+        CGContextSetLineWidth(ctx, 5);
+        CGRect rect = CGRectMake(self.selectedPiece.beginX,self.selectedPiece.beginY, self.gameService.piece_width, self.gameService.piece_height);
+        CGContextStrokeRect(ctx,rect);
+
 	}
 }
 // 根据FKLinkInfo绘制连接线的方法。

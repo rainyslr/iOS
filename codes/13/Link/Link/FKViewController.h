@@ -12,5 +12,10 @@
 @interface FKViewController : UIViewController <UIAlertViewDelegate
 	, FKGameViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *startBn;
+@property (strong, nonatomic) IBOutlet UIButton *returnBtn;
 @property (strong, nonatomic) IBOutlet UILabel *timeText;
+@property (nonatomic,strong) NSString* chosenMode;
+@property (nonatomic,strong) NSString* chosenScene;
+- (IBAction)stopGame:(id)sender;
+
 @end

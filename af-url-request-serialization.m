@@ -1,4 +1,24 @@
-parameter或者是Get报文中的query string或者作为报文的body。这个query string是什么意思呢
+协议：
+@protocol AFURLRequestSerialization <NSObject, NSCoding, NSCopying>
+// parameter或者是Get报文中的query string或者作为报文的body。这个query string是什么意思呢
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(NSDictionary *)parameters
+                                        error:(NSError *__autoreleasing *)error;
+
+@end
+
+
+@interface AFHTTPRequestSerializer : NSObject <AFURLRequestSerialization>
+@property (readonly, nonatomic, strong) NSDictionary *HTTPRequestHeaders;
+/**
+将parameter编码成query string的请求方法：默认包含`GET`, `HEAD`, and `DELETE`
+ */
+@property (nonatomic, strong) NSSet *HTTPMethodsEncodingParametersInURI;
+
+
+
+
+
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
                                 parameters:(id)parameters

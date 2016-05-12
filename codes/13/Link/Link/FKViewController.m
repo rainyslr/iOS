@@ -28,25 +28,20 @@ UIAlertView* successAlert;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *image = [UIImage imageNamed:@"room.jpg"];
+    self.view.layer.contents = (id) image.CGImage;
+    
 	[UIApplication sharedApplication].statusBarHidden = YES;
 	self.timeText.textColor = [UIColor colorWithRed:1 green:1
 		blue: 9/15 alpha:1];
-	// 使用room.jpg作为游戏背景图片
-	UIColor *bgColor = [UIColor colorWithPatternImage:
-		[UIImage imageNamed:@"room.jpg"]];
-	self.view.backgroundColor = bgColor;
-	// 为startBn按钮设置图片
-	[self.startBn setBackgroundImage:[UIImage imageNamed:@"start.png"]
-		forState:UIControlStateNormal];
-	[self.startBn setBackgroundImage:[UIImage imageNamed:@"start_down.png"]
-		forState:UIControlStateHighlighted];
-	// 为startBn的Touch Up Inside事件绑定事件处理方法
+   
 	[self.startBn addTarget:self action:@selector(startGame)
 		forControlEvents:UIControlEventTouchUpInside];
-	// 创建FKGameView控件
-	gameView = [[FKGameView alloc] initWithFrame:CGRectMake(0, 20, 320, 420)];
+    // 创建FKGameView控件
+    gameView = [[FKGameView alloc] initWithFrame:CGRectMake(0, 20, 500, 600)];
 	// 创建FKGameService对象
-	gameView.gameService = [[FKGameService alloc] init];
+    gameView.gameService = [[FKGameService alloc] initWithMode:self.chosenMode Scene:self.chosenScene];
+
 	gameView.delegate = self;
 	gameView.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:gameView];
@@ -61,6 +56,8 @@ UIAlertView* successAlert;
 }
 - (void) startGame
 {
+    gameView.hidden = NO;
+    self.returnBtn.enabled = NO;
 	// 如果之前的timer还未取消，取消timer
 	if (timer != nil)
 	{
@@ -87,6 +84,7 @@ UIAlertView* successAlert;
 		// 更改游戏的状态
 		isPlaying = NO;
 		[lostAlert show];
+        self.returnBtn.enabled = YES;
 		return;
 	}
 }
@@ -98,6 +96,11 @@ UIAlertView* successAlert;
 	{
 		[self startGame];
 	}
+    // 如果用户选中的“取消”按钮
+    else if(buttonIndex == 0)
+    {
+        self.timeText.text = @"";
+    }
 }
 - (void)checkWin:(FKGameView *)gameView
 {
@@ -110,6 +113,17 @@ UIAlertView* successAlert;
 		[timer invalidate];
 		// 更改游戏状态
 		isPlaying = NO;
+        self.returnBtn.enabled = YES;
 	}
+}
+- (IBAction)stopGame:(id)sender {
+    [timer invalidate];
+    // 更改游戏的状态
+    isPlaying = NO;
+    self.returnBtn.enabled = YES;
+    self.timeText.text = @"";
+//    [self.gameView.gameService.pieces removeAllObjects];
+      gameView.hidden = YES;
+//    [self viewDidLoad];
 }
 @end

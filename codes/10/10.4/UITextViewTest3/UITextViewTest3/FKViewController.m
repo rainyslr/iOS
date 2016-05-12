@@ -37,8 +37,10 @@
 -(BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
 	// 如果Action是mailShare:或weiboShare:方法
-	if(action == @selector(mailShare:)
-	   || action == @selector(weiboShare:))
+//	if(action == @selector(mailShare:)
+//	   || action == @selector(weiboShare:))
+    if(action == @selector(mailShare:))
+
 	{
 		// 如果textView选中的内容长度大于0，返回YES。
 		// 当该方法返回YES时，该Action对应的控件将会显示出来。

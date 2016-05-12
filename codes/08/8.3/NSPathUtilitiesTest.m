@@ -17,7 +17,7 @@ int main(int argc , char * argv[])
 		// 将~root解析成root用户的home目录
 		NSLog(@"解析~root的结果：%@" ,
 			[path stringByExpandingTildeInPath]);
-		NSString* path2 = @"/Users/yeeku/publish";
+		NSString* path2 = @"/Users/rainyslr";
 		// 将会输出~/publish
 		NSLog(@"替换成~的形式：%@" ,
 			[path2 stringByAbbreviatingWithTildeInPath]);

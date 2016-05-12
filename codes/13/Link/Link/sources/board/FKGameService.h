@@ -10,8 +10,19 @@
 #import "FKPiece.h"
 #import "FKLinkInfo.h"
 
+
+@class FKBaseBoard;
+
 @interface FKGameService : NSObject
+
 @property (nonatomic , strong) NSArray* pieces;
+@property (nonatomic , strong) NSString* type;
+@property (nonatomic , strong) NSString* scene;
+@property (nonatomic , strong) FKBaseBoard* board;
+@property (nonatomic,assign) NSInteger piece_width;
+@property (nonatomic,assign) NSInteger piece_height;
+
+- (instancetype)initWithMode:(NSString*)atype Scene:(NSString*)ascene;
 /**
  * 控制游戏开始的方法
  */

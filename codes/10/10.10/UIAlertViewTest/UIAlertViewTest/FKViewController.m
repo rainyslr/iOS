@@ -39,8 +39,8 @@
 - (void)alertView:(UIAlertView *)alertView
 	clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	NSString* msg = [NSString stringWithFormat:@"您点击了第%d个按钮"
-					 , buttonIndex];
+	NSString* msg = [NSString stringWithFormat:@"您点击了第%ld个按钮"
+					 , (long)buttonIndex];
 	// 创建UIAlertView控件
 	UIAlertView *alert = [[UIAlertView alloc]
 		initWithTitle:@"提示" // 指定标题

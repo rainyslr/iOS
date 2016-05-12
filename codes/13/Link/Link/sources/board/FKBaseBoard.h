@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface FKBaseBoard : NSObject
+@property (nonatomic,strong) NSString* scene;
+@property (nonatomic,assign) NSInteger piece_width;
+@property (nonatomic,assign) NSInteger piece_height;
+
+
 - (NSArray*) createPieces:(NSArray*)pieces;
 - (NSArray*) create;
+//- (NSInteger) get
 @end

@@ -99,7 +99,11 @@
 - (NSInteger)tableView:(UITableView*)tableView
 	numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger result = books.count;
+    NSLog(@"%ld rows in section:%ld",result,section);
+    return result;
+
 	// 由于该表格只有一个分区，直接返回books中集合元素个数代表表格的行数
-	return books.count;
+	return result;
 }
 @end
